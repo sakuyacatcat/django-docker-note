@@ -15,6 +15,7 @@ services:
       DB_NAME_TEST: djangodb_test
     volumes:
       - .:/app
+      - gunicorn:/var/run/gunicorn
       - staticdata:/var/www/app/static/
     depends_on:
       - db
@@ -42,6 +43,7 @@ services:
     volumes:
       - "./nginx/:/etc/nginx/"
       - "staticdata:/var/www/app/static/"
+      - gunicorn:/var/run/gunicorn
     depends_on:
       - web
     restart: always
@@ -50,4 +52,6 @@ volumes:
   data:
     driver: local
   staticdata:
+    driver: local
+  gunicorn:
     driver: local

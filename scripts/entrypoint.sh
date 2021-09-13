@@ -14,5 +14,9 @@ python3 manage.py shell -c "from django.contrib.auth import get_user_model; get_
 # Collect Staticfiles
 python3 manage.py collectstatic --noinput
 
+# setting gunicorn
+mkdir -p /var/run/gunicorn
+gunicorn config.wsgi --bind=unix:/var/run/gunicorn/gunicorn.sock
+
 # Launch server
-python3 manage.py runserver 0.0.0.0:8000
+# python3 manage.py runserver 0.0.0.0:8000
