@@ -2,7 +2,7 @@ version: "3"
 
 services:
   # Django application
-  web:
+  app:
     build: .
     ports:
       - "8000:8000"
@@ -36,7 +36,7 @@ services:
     restart: always
 
   # Nginx
-  nginx:
+  web:
     image: nginx:1.21.3
     ports:
       - "80:80"
@@ -45,7 +45,7 @@ services:
       - "staticdata:/var/www/app/static/"
       - gunicorn:/var/run/gunicorn
     depends_on:
-      - web
+      - app
     restart: always
 
 volumes:

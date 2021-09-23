@@ -19,6 +19,8 @@ WORKDIR ${ROOT_PATH}
 
 # transfer local django dev env
 COPY . ${ROOT_PATH}
+
+# install common library for Django application
 RUN pip3 install -r requirements/base.txt
 
 # start application script
